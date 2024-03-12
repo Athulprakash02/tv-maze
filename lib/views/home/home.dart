@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tv_maze/controller/services/show%20services/show_service.dart';
 import 'package:tv_maze/model/shows%20model/shows_model.dart';
+import 'package:tv_maze/views/home/widgets/movie_tile_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,10 +26,17 @@ class HomeScreen extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 centerTitle: true,
-                title: const Text('Tv Shows',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                title: const Text(
+                  'Tv Shows',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ),
               body: SafeArea(
                   child: GridView.builder(
+                physics: const BouncingScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 3.0,
@@ -36,40 +44,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 itemCount: shows!.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding:  const EdgeInsets.all(8.0),
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            image: DecorationImage(
-                              image: NetworkImage(shows[index].image.medium),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            color: Colors.black,
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              shows[index].name,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return MovieTileWidget(show: shows[index]);
                 },
               )),
             );
