@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tv_maze/model/shows%20model/shows_model.dart';
+import 'package:tv_maze/views/cast/cast_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({Key? key, required this.show}) : super(key: key);
@@ -15,7 +16,7 @@ class DetailsScreen extends StatelessWidget {
         title: const Text('Details'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(size.width/16),
+        padding: EdgeInsets.all(size.width / 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -141,7 +142,9 @@ class DetailsScreen extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Add functionality to view cast
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => CastScreen(id: show.id),
+                  ));
                 },
                 child: const Text('View Cast'),
               ),

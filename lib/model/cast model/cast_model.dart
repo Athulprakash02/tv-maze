@@ -40,14 +40,13 @@ class Character {
     int id;
     String url;
     String name;
-    Image? image;
+   
     Links links;
 
     Character({
         required this.id,
         required this.url,
         required this.name,
-        required this.image,
         required this.links,
     });
 
@@ -55,7 +54,6 @@ class Character {
         id: json["id"],
         url: json["url"],
         name: json["name"],
-        image: json["image"] == null ? null : Image.fromJson(json["image"]),
         links: Links.fromJson(json["_links"]),
     );
 
@@ -63,7 +61,6 @@ class Character {
         "id": id,
         "url": url,
         "name": name,
-        "image": image?.toJson(),
         "_links": links.toJson(),
     };
 }
@@ -125,8 +122,6 @@ class Person {
     String url;
     String name;
     Country country;
-    DateTime birthday;
-    dynamic deathday;
     String gender;
     Image image;
     int updated;
@@ -137,8 +132,6 @@ class Person {
         required this.url,
         required this.name,
         required this.country,
-        required this.birthday,
-        required this.deathday,
         required this.gender,
         required this.image,
         required this.updated,
@@ -150,8 +143,6 @@ class Person {
         url: json["url"],
         name: json["name"],
         country: Country.fromJson(json["country"]),
-        birthday: DateTime.parse(json["birthday"]),
-        deathday: json["deathday"],
         gender: json["gender"],
         image: Image.fromJson(json["image"]),
         updated: json["updated"],
@@ -163,8 +154,6 @@ class Person {
         "url": url,
         "name": name,
         "country": country.toJson(),
-        "birthday": "${birthday.year.toString().padLeft(4, '0')}-${birthday.month.toString().padLeft(2, '0')}-${birthday.day.toString().padLeft(2, '0')}",
-        "deathday": deathday,
         "gender": gender,
         "image": image.toJson(),
         "updated": updated,
