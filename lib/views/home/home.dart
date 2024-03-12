@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tv_maze/controller/services/show%20services/show_service.dart';
 import 'package:tv_maze/model/shows%20model/shows_model.dart';
+import 'package:tv_maze/views/details/details.dart';
 import 'package:tv_maze/views/home/widgets/movie_tile_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -44,7 +45,14 @@ class HomeScreen extends StatelessWidget {
                 ),
                 itemCount: shows!.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return MovieTileWidget(show: shows[index]);
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              DetailsScreen(show: shows[index]),
+                        ));
+                      },
+                      child: MovieTileWidget(show: shows[index]));
                 },
               )),
             );

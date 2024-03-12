@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 171, 182, 155),
+        
+        scaffoldBackgroundColor: const Color.fromARGB(255, 1, 1, 1),
         elevatedButtonTheme: const ElevatedButtonThemeData(
             style: ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll(
