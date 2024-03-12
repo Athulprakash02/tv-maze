@@ -2,6 +2,8 @@
 //
 //     final showsModel = showsModelFromJson(jsonString);
 
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 
 List<ShowsModel> showsModelFromJson(String str) => List<ShowsModel>.from(json.decode(str).map((x) => ShowsModel.fromJson(x)));

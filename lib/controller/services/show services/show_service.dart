@@ -12,12 +12,11 @@ class ShowService {
      
       final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
-        print('object');
         List<dynamic> jsonData = json.decode(response.body);
         results =  jsonData.map((data) => ShowsModel.fromJson(data)).toList();
       }
+    // ignore: empty_catches
     } catch (e) {
-      print(e.toString());
    
     }
     return results;
