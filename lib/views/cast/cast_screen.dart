@@ -29,24 +29,31 @@ class CastScreen extends StatelessWidget {
             ),
             body: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                              itemCount: casts!.length,
-                              itemBuilder: (context, index) => ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    backgroundImage: NetworkImage(
-                        casts[index].person.image.medium.toString()),
-                  ),
-                  title: Text(
-                    casts[index].character.name,
-                    style: const TextStyle(color: Colors.white,fontSize: 20),
-                  ),
-                  subtitle: Text(casts[index].person.name,style: const TextStyle(fontSize: 16,color: Color.fromARGB(255, 97, 97, 97)),),
-                              ),
-                            ),
-                )),
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: casts!.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      leading: CircleAvatar(
+                        radius: 28,
+                        backgroundImage: NetworkImage(
+                            casts[index].person?.image?.medium.toString()??''),
+                      ),
+                      title: Text(
+                        casts[index].character?.name ?? 'Not Found!',
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      subtitle: Text(
+                        casts[index].person?.name?? 'Not Found!',
+                        style: const TextStyle(
+                            fontSize: 16,
+                            color: Color.fromARGB(255, 97, 97, 97)),
+                      ),
+                    );
+                  }),
+            )),
           );
         } else {
           return const SizedBox();

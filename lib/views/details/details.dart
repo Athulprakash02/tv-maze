@@ -16,6 +16,7 @@ class DetailsScreen extends StatelessWidget {
         title: const Text('Details'),
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.all(size.width / 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +67,7 @@ class DetailsScreen extends StatelessWidget {
                     genre.toString(),
                     style: const TextStyle(color: Colors.white),
                   ),
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.teal,
                 );
               }).toList(),
             ),
